@@ -81,32 +81,51 @@ const createUsernames = function (accs) {
 };
 createUsernames(accounts);
 
+const formatMovementDate = function (date, locale) {
+  const calcDaysPassed = (date1, date2) =>
+    Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
+
+  const daysPassed = calcDaysPassed(new Date(), date);
+  console.log(daysPassed);
+
+  if (daysPassed === 0) return "Today";
+  if (daysPassed === 1) return "Yesterday";
+  if (daysPassed <= 7) return `${daysPassed} days ago`;
+
+  return new Intl.DateTimeFormat(locale).format(date);
+};
+
 const calcDisplayBalance = function (acc) {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
   labelBalance.textContent = `${acc.balance}€`;
 };
 
-const displayMovements = function (movements, sort = false) {
+const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = "";
 
-  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+  const movs = sort
+    ? acc.movements.slice().sort((a, b) => a - b)
+    : acc.movements;
 
   movs.forEach(function (mov, i) {
     const type = mov > 0 ? "deposit" : "withdrawal";
+
+    const date = new Date(acc.movementsDates[i]);
+    const displayDate = formatMovementDate(date, acc.locale);
 
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
-        <div class="movements__value">${mov}€</div>
+        <div class="movements__date">${displayDate}</div>
+        <div class="movements__value">${mov}</div>
       </div>
     `;
 
     containerMovements.insertAdjacentHTML("afterbegin", html);
   });
 };
-
 const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
     .filter((mov) => mov > 0)
@@ -131,7 +150,7 @@ const calcDisplaySummary = function (acc) {
 
 const updateUI = function (acc) {
   // Display movements
-  displayMovements(acc.movements);
+  displayMovements(acc);
 
   // Display balance
   calcDisplayBalance(acc);
