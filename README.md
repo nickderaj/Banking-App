@@ -18,7 +18,7 @@ This could be used to store transactional information for a group of people and 
 
 ## Contribution Guidelines
 
-Contribute freely
+Design & Code by Jonas Schmedtmann, used for learning purposes from a lecture on www.Udemy.com
 
 ## Questions
 
