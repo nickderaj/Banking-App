@@ -14,7 +14,13 @@ Simple banking app to track transfer between different accounts. Makes use of da
 
 ## Usage Information
 
-This could be used to store transactional information for a group of people and make simple transfers between the accounts.
+This could be used to store transactional information for a group of people and make simple transfers between the accounts.<br>
+Using the accounts that have already been set up, use the following information to login: <br>
+username : js, password: 1111 <br>
+username: jd, password: 2222 <br>
+To make transfers between the accounts, input "js" or "jd" in the Transfer to field and then the amount. <br>
+The loan will be approved in a few seconds after clicking the request button, assuming it falls within the 'acceptable' amount. <br>
+To close the account, simply put the username and password information in again.
 
 ## Contribution Guidelines
 
@@ -35,7 +41,7 @@ If you have any questions, then feel free to contact me on the below:
 
 | <img src=".\img\BankingAppLogin.png" width="500"> |
 | :-----------------------------------------------: |
-|     **Figure 2.** _Log In to Jonas' Account_      |
+|    **Figure 2.** _Log In to Jessica's Account_    |
 
 | <img src=".\img\BankingAppTransfer.png" width="500"> |
 | :--------------------------------------------------: |
@@ -51,4 +57,8 @@ If you have any questions, then feel free to contact me on the below:
 
 | <img src=".\img\BankingAppSort.png" width="500"> |
 | :----------------------------------------------: |
-|    **Figure 4.** _Sort Button Functionality_     |
+|    **Figure 5.** _Sort Button Functionality_     |
+
+| <img src=".\img\BankingAppTimer.png" width="500"> |
+| :-----------------------------------------------: |
+|           **Figure 6.** _Logout Timer_            |
